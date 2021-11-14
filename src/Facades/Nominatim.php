@@ -1,16 +1,16 @@
 <?php
 
-namespace ErikAraujo\Nominatim;
+namespace ErikAraujo\Nominatim\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \ErikAraujo\Nominatim\Nominatim
  */
-class NominatimFacade extends Facade
+class Nominatim extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-nominatim';
+        return 'nominatim';
     }
 }

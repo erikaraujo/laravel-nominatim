@@ -8,15 +8,16 @@ use Illuminate\Support\Facades\Http;
 class Nominatim
 {
     private string $url;
+
+    /** @var array<string|int> */
     private array $params;
 
-    public const STATUS_ENDPOINT = 'status.php';
-    public const SEARCH_ENDPOINT = 'search?';
-    public const REVERSE_ENDPOINT = 'reverse?';
-    public const LOOKUP_ENDPOINT = 'lookup?';
-    public const DETAILS_ENDPOINT = 'details?';
-
-    public const ACCEPTED_POLYGON_TYPES = ['geojson', 'kml', 'svg', 'text'];
+    private const STATUS_ENDPOINT = 'status.php';
+    private const SEARCH_ENDPOINT = 'search?';
+    private const REVERSE_ENDPOINT = 'reverse?';
+    private const LOOKUP_ENDPOINT = 'lookup?';
+    private const DETAILS_ENDPOINT = 'details?';
+    private const ACCEPTED_POLYGON_TYPES = ['geojson', 'kml', 'svg', 'text'];
 
     public function __construct()
     {
@@ -156,6 +157,9 @@ class Nominatim
         return $this;
     }
 
+    /**
+     * @param array<int> $ids
+     */
     public function excludePlaceIds(array $ids): self
     {
         $this->params['exclude_place_ids'] = implode(',', $ids);
@@ -163,6 +167,9 @@ class Nominatim
         return $this;
     }
 
+    /**
+     * @param array<string> $countries
+     */
     public function forCountries(array $countries): self
     {
         $this->params['countrycodes'] = implode(',', $countries);
