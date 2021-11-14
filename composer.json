@@ -4,7 +4,8 @@
     "keywords": [
         "erikaraujo",
         "laravel",
-        "laravel-nominatim"
+        "laravel-nominatim",
+        "nominatim"
     ],
     "homepage": "https://github.com/erikaraujo/laravel-nominatim",
     "license": "MIT",
