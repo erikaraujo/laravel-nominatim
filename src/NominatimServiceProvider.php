@@ -14,11 +14,12 @@ class NominatimServiceProvider extends ServiceProvider
             ], 'config');
         }
     }
+
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/nominatim.php', 'nominatim');
 
-        $this->app->bind('nominatim', function() {
+        $this->app->bind('nominatim', function () {
             return new Nominatim();
         });
     }
