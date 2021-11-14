@@ -2,9 +2,9 @@
 
 namespace ErikAraujo\Nominatim;
 
+use ErikAraujo\Nominatim\Commands\NominatimCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use ErikAraujo\Nominatim\Commands\NominatimCommand;
 
 class NominatimServiceProvider extends PackageServiceProvider
 {

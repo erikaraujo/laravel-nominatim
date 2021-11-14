@@ -2,9 +2,9 @@
 
 namespace ErikAraujo\Nominatim\Tests;
 
+use ErikAraujo\Nominatim\NominatimServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ErikAraujo\Nominatim\NominatimServiceProvider;
 
 class TestCase extends Orchestra
 {

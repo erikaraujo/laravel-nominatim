@@ -2,21 +2,21 @@
 
 namespace ErikAraujo\Nominatim;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 
 class Nominatim
 {
     private string $url;
     private array $params;
 
-    const STATUS_ENDPOINT = 'status.php';
-    const SEARCH_ENDPOINT = 'search?';
-    const REVERSE_ENDPOINT = 'reverse?';
-    const LOOKUP_ENDPOINT = 'lookup?';
-    const DETAILS_ENDPOINT = 'details?';
+    public const STATUS_ENDPOINT = 'status.php';
+    public const SEARCH_ENDPOINT = 'search?';
+    public const REVERSE_ENDPOINT = 'reverse?';
+    public const LOOKUP_ENDPOINT = 'lookup?';
+    public const DETAILS_ENDPOINT = 'details?';
 
-    const ACCEPTED_POLYGON_TYPES = ['geojson', 'kml', 'svg', 'text'];
+    public const ACCEPTED_POLYGON_TYPES = ['geojson', 'kml', 'svg', 'text'];
 
     public function __construct()
     {
@@ -55,8 +55,7 @@ class Nominatim
         string $state = null,
         string $country = null,
         string $postalCode = null
-    ): Response
-    {
+    ): Response {
         $url = $this->url . self::SEARCH_ENDPOINT;
         $params = array_merge(
             $this->params,
