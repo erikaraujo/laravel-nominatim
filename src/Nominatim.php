@@ -21,12 +21,12 @@ class Nominatim
 
     public function __construct()
     {
-        $this->url = config('nominatim.url');
+        $this->url = strval(config('nominatim.url'));
         $this->params = [
-            'format' => config('nominatim.format'),
-            'addressdetails' => (int) config('nominatim.details.include_address_details'),
-            'extratags' => (int) config('nominatim.details.include_extra_tags'),
-            'namedetails' => (int) config('nominatim.details.include_name_details'),
+            'format' => strval(config('nominatim.format')),
+            'addressdetails' => intval(config('nominatim.details.include_address_details')),
+            'extratags' => intval(config('nominatim.details.include_extra_tags')),
+            'namedetails' => intval(config('nominatim.details.include_name_details')),
         ];
 
         if ((config('nominatim.polygon.include_polygon') && in_array(config('nominatim.polygon.polygon_type'), self::ACCEPTED_POLYGON_TYPES))) {
@@ -35,11 +35,15 @@ class Nominatim
 
         if (config('nominatim.email.include_email')) {
             if (config('nominatim.email.include_email_type') === 'default') {
-                $this->params['email'] = config('nominatim.email.default_email');
+                $this->params['email'] = strval(config('nominatim.email.default_email'));
             }
 
             if (config('nominatim.email.include_email_type') === 'auth') {
-                $this->params['email'] = data_get(auth()->user(), config('nominatim.email.auth_email_field'));
+                /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
+                $user = auth()->user();
+                $emailField = strval(config('nominatim.email.auth_email_field'));
+
+                $this->params['email'] = $user->$emailField;
             }
         }
     }
